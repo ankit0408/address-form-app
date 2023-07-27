@@ -111,25 +111,24 @@ export class Client4FormComponent {
 
     // Prepare the API URL with the complete_address as a query parameter
     const apiUrl = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}`;
-    const entities = 'pincode'
+    const entities = 'name,pin,state,Address(House No. Building Area Street),locality,City/District/Town';
 
     // Call the API using HttpClient's get method
-    this.apiService.getEntity(completeAddress,entities).subscribe(
+    this.apiService.getEntity(completeAddress, entities).subscribe(
       (response: any) => {
         // Handle the response from the API with the selected suggestion data
         console.log('API Response with selected suggestion:', response);
         if (response) {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
-          console.log(response[0]);
-          this.formData.name = response[0]?.name ?? null;
-          this.formData.pincode = response[0]?.pincode ?? null;
-          this.formData.locality = response[0]?.locality ?? null;
-          this.formData.area = response[0]?.area ?? null;
-          this.formData.city = response[0]?.city ?? null;
-          this.formData.state = response[0]?.state ?? null;
-          this.formData.phone = response[0]?.phone ?? null;
-          this.formData.landmark = response[0]?.landmark ?? null;
-                  }
+          console.log(response);
+          this.formData.name = response['name'];
+          this.formData.pin = response['pin'];
+          this.formData.locality = response['locality'];
+          this.formData.address = response['Address(House No. Building Area Street)'];
+          this.formData.city = response['City/District/Town'];
+          this.formData.state = response['state'];
+          this.formData.phone = this.formData.phone;
+        }
       },
       (error: any) => {
         console.error('Error fetching data from the API:', error);
