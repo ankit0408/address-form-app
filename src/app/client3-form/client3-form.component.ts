@@ -110,8 +110,7 @@ export class Client3FormComponent {
     const completeAddress = suggestion;
 
     // Prepare the API URL with the complete_address as a query parameter
-    const apiUrl = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}`;
-    const entities = 'pincode'
+    const entities = 'address'
     // Call the API using HttpClient's get method
     this.apiService.getEntity(completeAddress, entities).subscribe(
       (response: any) => {
@@ -120,9 +119,9 @@ export class Client3FormComponent {
         if (response) {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
           console.log(response[0]);
-          this.formData.name = response[0]?.name ?? null;
-          this.formData.phone = response[0]?.phone ?? null;
-          this.formData.address = response[0]?.address ?? null;
+          this.formData.name = response['name'];
+          this.formData.phone = this.formData.phone;
+          this.formData.address = suggestion
         }
       },
       (error: any) => {
