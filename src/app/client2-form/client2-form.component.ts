@@ -29,7 +29,7 @@ export class Client2FormComponent {
     const apiUrl = 'http://localhost:5000/api/store_address';
 
     // Send the form data to the API using HttpClient's post method
-    this.apiService.saveData(this.formData).subscribe(
+    this.apiService.saveEntitiesData(this.formData).subscribe(
       (response: any) => {
         // Handle the API response after saving the data
         console.log('API Response after saving data:', response);
@@ -111,7 +111,7 @@ export class Client2FormComponent {
 
     // Prepare the API URL with the complete_address as a query parameter
     const apiUrl = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}`;
-    const entities = 'phone number, name, country'
+    const entities = 'phone number, name, country, pincode,flat/House no./Building/Company/Apartment, area/street, city/district/town, state, landmark'
 
     // Call the API using HttpClient's get method
     this.apiService.getEntity(completeAddress, entities).subscribe(
@@ -120,18 +120,16 @@ export class Client2FormComponent {
         console.log('API Response with selected suggestion:', response);
         if (response) {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
-          console.log(response[0]);
-          this.formData.name = response[0]?.name ?? null;
-          this.formData.pincode = response[0]?.pincode ?? null;
-          this.formData.locality = response[0]?.locality ?? null;
-          this.formData.area = response[0]?.area ?? null;
-          this.formData.city = response[0]?.city ?? null;
-          this.formData.state = response[0]?.state ?? null;
-          this.formData.phone = response[0]?.phone ?? null;
-          this.formData.landmark = response[0]?.landmark ?? null;
-          this.formData.country = response[0]?.country ?? null;
-          this.formData.flat = response[0]?.flat ?? null;
-                  }
+          console.log(response);
+          this.formData.name = response['name'];
+          this.formData.pincode = response['pincode'];
+          this.formData.flat = response['flat/House no./Building/Company/Apartment'];
+          this.formData.area = response['area/street'];
+          this.formData.city = response['city/district/town'];
+          this.formData.state = response['state'];
+          this.formData.landmark = response['landmark'];
+          this.formData.country = response['country'];
+        }
       },
       (error: any) => {
         console.error('Error fetching data from the API:', error);

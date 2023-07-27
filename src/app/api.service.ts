@@ -21,6 +21,20 @@ export class ApiService {
     );
   }
 
+
+  saveEntitiesData(address: string): Observable<any> {
+
+    console.log(address)
+    
+    const url = 'http://localhost:5000/api/store_address_entities';
+    return this.http.post<any>(url, address).pipe(
+      catchError((error: any) => {
+        console.error('Error sending data to the API:', error);
+        return throwError('Something went wrong. Please try again later.');
+      })
+    );
+  }
+
   saveData(address: string): Observable<any> {
 
     console.log(address)

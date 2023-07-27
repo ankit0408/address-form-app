@@ -29,7 +29,7 @@ export class Client1FormComponent {
     const apiUrl = 'http://localhost:5000/api/store_address';
 
     // Send the form data to the API using HttpClient's post method
-    this.apiService.saveData(this.formData).subscribe(
+    this.apiService.saveEntitiesData(this.formData).subscribe(
       (response: any) => {
         // Handle the API response after saving the data
         console.log('API Response after saving data:', response);
