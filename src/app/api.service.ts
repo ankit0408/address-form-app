@@ -22,6 +22,8 @@ export class ApiService {
   }
 
   saveData(address: string): Observable<any> {
+
+    console.log(address)
     
     const url = 'http://localhost:5000/api/store_address';
     return this.http.post<any>(url, address).pipe(
@@ -32,9 +34,9 @@ export class ApiService {
     );
   }
 
-  getEntity(completeAddress: string): Observable<any> {
+  getEntity(completeAddress: string, entities: string): Observable<any> {
 
-    const url = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}`;
+    const url = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}&entities_field=${entities}`;
 
     return this.http.get<any>(url).pipe(
       catchError((error: any) => {

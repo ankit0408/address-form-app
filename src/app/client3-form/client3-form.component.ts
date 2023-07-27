@@ -25,7 +25,7 @@ export class Client3FormComponent {
   constructor(private apiService: ApiService) { }
 
   onSave(): void {
-
+    console.log('testing')
     const apiUrl = 'http://localhost:5000/api/store_address';
 
     // Send the form data to the API using HttpClient's post method
@@ -111,9 +111,9 @@ export class Client3FormComponent {
 
     // Prepare the API URL with the complete_address as a query parameter
     const apiUrl = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}`;
-
+    const entities = 'pincode'
     // Call the API using HttpClient's get method
-    this.apiService.getEntity(completeAddress).subscribe(
+    this.apiService.getEntity(completeAddress, entities).subscribe(
       (response: any) => {
         // Handle the response from the API with the selected suggestion data
         console.log('API Response with selected suggestion:', response);
@@ -121,14 +121,9 @@ export class Client3FormComponent {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
           console.log(response[0]);
           this.formData.name = response[0]?.name ?? null;
-          this.formData.pincode = response[0]?.pincode ?? null;
-          this.formData.locality = response[0]?.locality ?? null;
-          this.formData.area = response[0]?.area ?? null;
-          this.formData.city = response[0]?.city ?? null;
-          this.formData.state = response[0]?.state ?? null;
           this.formData.phone = response[0]?.phone ?? null;
-          this.formData.landmark = response[0]?.landmark ?? null;
-                  }
+          this.formData.address = response[0]?.address ?? null;
+        }
       },
       (error: any) => {
         console.error('Error fetching data from the API:', error);

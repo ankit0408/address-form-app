@@ -111,9 +111,10 @@ export class Client4FormComponent {
 
     // Prepare the API URL with the complete_address as a query parameter
     const apiUrl = `http://localhost:5000/api/addresses/entities?complete_address=${encodeURIComponent(completeAddress)}`;
+    const entities = 'pincode'
 
     // Call the API using HttpClient's get method
-    this.apiService.getEntity(completeAddress).subscribe(
+    this.apiService.getEntity(completeAddress,entities).subscribe(
       (response: any) => {
         // Handle the response from the API with the selected suggestion data
         console.log('API Response with selected suggestion:', response);

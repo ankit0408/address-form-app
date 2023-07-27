@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Add Bootstrap CSS link here -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
 
   <div class="container">
     <div class="form-conatiner">
       <form (submit)="onSave()" class="form-grid">
-        <div class="form-row row">
-          <label for="phone" class="col-sm-6 col-12 col-md-6">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="col-sm-6 col-12 col-md-6">
+        <div class="form-row">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="form-row"
+            (input)="onPhoneNumberChange()">
+          <div class="modal" *ngIf="showModal">
+            <div class="modal-content">
+              <h2>Suggestions</h2>
+              <ul>
+                <li *ngFor="let suggestion of suggestions" (click)="onSuggestionSelected(suggestion)">
+                  {{ suggestion }}
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="form-row row">
           <label for="name" class="col-sm-6 col-12 col-md-6">Name:</label>
-          <input type="text" id="name" name="name" [(ngModel)]="formData.name" required class="col-sm-6 col-12 col-md-6">
+          <input type="text" id="name" name="name" [(ngModel)]="formData.name" required
+            class="col-sm-6 col-12 col-md-6">
         </div>
         <div class="form-row row">
           <label for="pincode" class="col-sm-6 col-12">Pincode:</label>
-          <input type="text" id="pincode" name="pincode" [(ngModel)]="formData.pincode" required class="col-sm-6 col-12 col-md-6">
+          <input type="text" id="pincode" name="pincode" [(ngModel)]="formData.pincode" required
+            class="col-sm-6 col-12 col-md-6">
         </div>
         <div class="form-row row">
           <label for="state" class="col-sm-6 col-12 col-md-6">State:</label>
@@ -29,7 +44,8 @@
         </div>
         <div class="form-row double-height">
           <label for="address" class="col-12 col-md-6">Address(House No., Building,Area,Street:)</label>
-          <input type="text" id="address" name="address" [(ngModel)]="formData.area" required class="form-row double-height">
+          <input type="text" id="address" name="address" [(ngModel)]="formData.address" required
+            class="form-row double-height">
         </div>
         <div class="form-row">
           <label for="locality" class="col-sm-6 col-12 col-md-6">Locality:</label>
@@ -37,7 +53,8 @@
         </div>
         <div class="form-row row">
           <label for="city" class="col-sm-6 col-12 col-md-6">City/District/Town:</label>
-          <input type="text" id="city" name="city" [(ngModel)]="formData.city" required class="col-sm-6 col-12 col-md-6">
+          <input type="text" id="city" name="city" [(ngModel)]="formData.city" required
+            class="col-sm-6 col-12 col-md-6">
         </div>
         <div class="form-row row">
           <button type="submit" class="col-sm-6 col-12 col-md-6">Save</button>
@@ -49,4 +66,5 @@
 
   <!-- Add other scripts if needed -->
 </body>
+
 </html>
