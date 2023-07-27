@@ -1,0 +1,15 @@
+<div>
+  <button (click)="showForm(1)">Form 1</button>
+  <button (click)="showForm(2)">Form 2</button>
+  <button (click)="showForm(3)">Form 3</button>
+  <button (click)="showForm(4)">Form 4</button>
+</div>
+<div>
+  <form *ngFor="let form of forms; let i = index" [formGroup]="form" [hidden]="currentForm !== i+1">
+    <input formControlName="address_line1" placeholder="Address Line 1" required>
+    <input formControlName="address_line2" placeholder="Address Line 2">
+    <input formControlName="city" placeholder="City" required>
+    <input formControlName="zip_code" placeholder="ZIP Code" required>
+    <input formControlName="phone_number" placeholder="Phone Number" (input)="onPhoneNumberChange(form)">
+  </form>
+</div>

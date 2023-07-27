@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Add Bootstrap CSS link here -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="form-conatiner">
+      <form (submit)="onSave()" class="form-grid">
+        <div class="form-row row">
+          <label for="phone" class="col-sm-6 col-12 col-md-6">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="col-sm-6 col-12 col-md-6">
+        </div>
+        <div class="form-row row">
+          <label for="name" class="col-sm-6 col-12 col-md-6">Name:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="formData.name" required class="col-sm-6 col-12 col-md-6">
+        </div>
+        <div class="form-row row">
+          <label for="pincode" class="col-sm-6 col-12">Pincode:</label>
+          <input type="text" id="pincode" name="pincode" [(ngModel)]="formData.pincode" required class="col-sm-6 col-12 col-md-6">
+        </div>
+        <div class="form-row row">
+          <label for="state" class="col-sm-6 col-12 col-md-6">State:</label>
+          <select id="state" name="state" [(ngModel)]="formData.state" required class="col-sm-6 col-12 col-md-6">
+            <option *ngFor="let option of stateOptions" [value]="option">{{ option }}</option>
+          </select>
+        </div>
+        <div class="form-row double-height">
+          <label for="address" class="col-12 col-md-6">Address(House No., Building,Area,Street:)</label>
+          <input type="text" id="address" name="address" [(ngModel)]="formData.area" required class="form-row double-height">
+        </div>
+        <div class="form-row">
+          <label for="locality" class="col-sm-6 col-12 col-md-6">Locality:</label>
+          <input type="text" id="locality" name="locality" [(ngModel)]="formData.locality" required class="form-row">
+        </div>
+        <div class="form-row row">
+          <label for="city" class="col-sm-6 col-12 col-md-6">City/District/Town:</label>
+          <input type="text" id="city" name="city" [(ngModel)]="formData.city" required class="col-sm-6 col-12 col-md-6">
+        </div>
+        <div class="form-row row">
+          <button type="submit" class="col-sm-6 col-12 col-md-6">Save</button>
+          <button type="button" (click)="onCancel()" class="col-sm-6 col-12 col-md-6">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add other scripts if needed -->
+</body>
+</html>
