@@ -15,6 +15,7 @@
               </button>
             </li>
           </ul>
+          <button (click)="onCancelSuggestions()">Cancel</button>
         </div>
       </div>
     </div>
@@ -49,6 +50,9 @@
       <input type="text" id="city" name="city" [(ngModel)]="formData.city" required class="form-row">
     </div>
     <div class="form-row">
+      <div class="modal" *ngIf="loading">
+        <div class="modal-content loading-spinner"> Loading... </div>
+      </div>
       <button type="submit">Save</button>
       <button type="button" (click)="onCancel()">Cancel</button>
     </div>

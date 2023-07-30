@@ -36,7 +36,10 @@ export class ApiService {
   }
 
   updateEntitiesData(address: string, address_id: string): Observable<any> {
+    console.log('check1');
+    console.log(address_id);
     const url = `http://localhost:5000/api/store_address/${address_id}`;
+    console.log(url)
     return this.http.put<any>(url, address).pipe(
       catchError((error: any) => {
         console.error('Error sending data to the API:', error);
