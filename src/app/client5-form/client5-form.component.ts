@@ -92,7 +92,7 @@ export class Client5FormComponent {
     this.selectedAddressId = key;
 
     // Prepare the API URL with the complete_address as a query parameter
-    const entities = ['name','address_line1','address_line2','address_line3'];
+    const entities = ['full name','address_line1','address_line2','address_line3'];
     // Call the API using HttpClient's get method
     this.apiService.getClientEntity(this.selectedAddressId, entities).subscribe(
       (response: any) => {
@@ -102,7 +102,7 @@ export class Client5FormComponent {
         if (response) {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
           console.log(response);
-          this.formData.name = response['name'];
+          this.formData.name = response['full name'];
           this.formData.phone = this.formData.phone;
           this.formData.address_line1 = response['address_line1'];
           this.formData.address_line2 = response['address_line2'];

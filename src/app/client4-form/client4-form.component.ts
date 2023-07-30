@@ -92,7 +92,7 @@ export class Client4FormComponent {
       'name',
       'pin',
       'state',
-      'Address(House No. Building Area Street)',
+      'Address(House No., Building, Area, Street)',
       'locality',
       'City/District/Town'
     ];
@@ -106,7 +106,7 @@ export class Client4FormComponent {
           this.formData.name = response['name'];
           this.formData.pin = response['pin'];
           this.formData.locality = response['locality'];
-          this.formData.address = response['Address(House No. Building Area Street)'];
+          this.formData.address = response['Address(House No., Building, Area, Street)'];
           this.formData.city = response['City/District/Town'];
           this.formData.state = response['state'].toLowerCase();
           this.formData.phone = this.formData.phone;
