@@ -1,26 +1,28 @@
 <div class="form-container">
     <form (submit)="onSave()">
-            <div class="form-row">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="form-row"
-                    (input)="onPhoneNumberChange()">
-                    <div class="modal" *ngIf="showModal">
-                        <div class="modal-content">
-                          <h2>Suggestions</h2>
-                          <ul>
-                            <li *ngFor="let suggestion of suggestions" (click)="onSuggestionSelected(suggestion)">
-                              {{ suggestion }}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+        <div class="form-row">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="form-row"
+                (input)="onPhoneNumberChange()">
+            <div class="modal" *ngIf="showModal">
+                <div class="modal-content">
+                    <h2>Suggestions</h2>
+                    <ul>
+                        <li *ngFor="let suggestion of suggestions | keyvalue">
+                            <button (click)="onSuggestionSelected(suggestion.key, suggestion.value)">
+                                {{ suggestion.value }}
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
         <div class="form-row">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" [(ngModel)]="formData.name" required class="form-row">
         </div>
 
-        <div class="form-block" class="form-row">
+        <div class="form-block form-row">
             <div class="form-col">
                 <label for="country">Country:</label>
                 <input type="text" id="country" name="country" [(ngModel)]="formData.country" required class="form-row">
@@ -33,8 +35,7 @@
         </div>
         <div class="form-row">
             <label for="flat">Flat, House no., Building, Company,Apartment:</label>
-            <input type="text" id="flat" name="flat" [(ngModel)]="formData.flat" required
-                class="form-row">
+            <input type="text" id="flat" name="flat" [(ngModel)]="formData.flat" required class="form-row">
         </div>
         <div class="form-row">
             <label for="area">Area/Street:</label>

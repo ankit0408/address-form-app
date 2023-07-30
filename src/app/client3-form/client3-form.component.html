@@ -1,6 +1,6 @@
-<div class="my-form-container">
+<div class="form-container">
   <form (submit)="onSave()">
-    <div class="form-row">
+    <div class="form-row form-block">
       <label for="phone">Phone Number:</label>
       <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="form-row"
         (input)="onPhoneNumberChange()">
@@ -8,8 +8,10 @@
         <div class="modal-content">
           <h2>Suggestions</h2>
           <ul>
-            <li *ngFor="let suggestion of suggestions" (click)="onSuggestionSelected(suggestion)">
-              {{ suggestion }}
+            <li *ngFor="let suggestion of suggestions | keyvalue">
+              <button (click)="onSuggestionSelected(suggestion.key, suggestion.value)">
+                {{ suggestion.value }}
+              </button>
             </li>
           </ul>
         </div>

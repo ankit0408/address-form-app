@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Client5FormComponent } from './client5-form/client5-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     Client2FormComponent,
     Client3FormComponent,
     Client4FormComponent,
+    Client5FormComponent,
   ],
   imports: [
     BrowserModule,

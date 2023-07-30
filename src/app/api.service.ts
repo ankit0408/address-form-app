@@ -35,6 +35,18 @@ export class ApiService {
     );
   }
 
+  updateEntitiesData(address: string, address_id: string): Observable<any> {
+    const url = `http://localhost:5000/api/store_address/${address_id}`;
+    return this.http.put<any>(url, address).pipe(
+      catchError((error: any) => {
+        console.error('Error sending data to the API:', error);
+        return throwError('Something went wrong. Please try again later.');
+      }
+      )
+    );
+  }
+    
+
   saveData(address: string): Observable<any> {
 
     console.log(address)
@@ -55,6 +67,22 @@ export class ApiService {
     return this.http.get<any>(url).pipe(
       catchError((error: any) => {
         console.error('Error fetching data from the API:', error);
+        return throwError('Something went wrong. Please try again later.');
+      })
+    );
+  }
+
+  getClientEntity(address_id: string, entities: string[]): Observable<any> {
+
+    const postData = {
+      id: address_id,
+      client_entities: entities
+    };
+    const url = `http://localhost:5000/api/addresses/entities`;
+
+    return this.http.post<any>(url, postData).pipe(
+      catchError((error: any) => {
+        console.error('Error fetching client entitities from the API:', error);
         return throwError('Something went wrong. Please try again later.');
       })
     );

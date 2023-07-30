@@ -8,14 +8,13 @@ interface SuggestionObject {
   [key: string]: string;
 }
 
-
 @Component({
   selector: 'app-address-form',
-  templateUrl: './client1-form.component.html',
-  styleUrls: ['./client1-form.component.css']
+  templateUrl: './client5-form.component.html',
+  styleUrls: ['./client5-form.component.css']
 
 })
-export class Client1FormComponent {
+export class Client5FormComponent {
   stateOptions: string[] = stateOptions;
   addressOptions: string[] = [];
   formData: any = {}; // Replace 'any' with the appropriate interface/type for your form data
@@ -34,6 +33,7 @@ export class Client1FormComponent {
     console.log(this.formData)
     console.log(this.selectedAddressId);
     console.log(this.suggestions);
+
 
     if (this.selectedAddressId) {
       this.apiService.updateEntitiesData(this.formData, this.selectedAddressId).subscribe(
@@ -69,8 +69,6 @@ export class Client1FormComponent {
         (response: any) => {
           // Assuming the API returns an array of suggestions for the dropdown
           this.suggestions = response;
-          console.log(this.suggestions);
-          console.log('checking');
           this.showModal = Object.keys(this.suggestions).length > 0;
           this.showSuggestions = Object.keys(this.suggestions).length > 0;
         },
@@ -126,30 +124,24 @@ export class Client1FormComponent {
     this.showModal = false;
     console.log(value);
     console.log(key);
-    this.selectedAddressId = key;
-    // Create the complete address variable
-    const completeAddress = value;
+    const address_id = key;
 
     // Prepare the API URL with the complete_address as a query parameter
-    const apiUrl = `http://localhost:5000/api/addresses/entities`;
-    
-    const entities=['name',  'pincode',  'locality',  'area',  'city',  'state',  'phone',  'landmark']
+    const entities = ['name','address_line1','address_line2','address_line3'];
     // Call the API using HttpClient's get method
-    this.apiService.getClientEntity(this.selectedAddressId, entities).subscribe(
+    this.apiService.getClientEntity(address_id, entities).subscribe(
       (response: any) => {
         // Handle the response from the API with the selected suggestion data
         console.log('API Response with selected suggestion:', response);
         if (response) {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
           console.log(response);
-          this.formData.pincode = response['pincode'];
           this.formData.name = response['name'];
-          this.formData.locality = response['locality'];
-          this.formData.area = response['area'];
-          this.formData.city = response['city'];
-          this.formData.state = response['state'].toLowerCase();
-          this.formData.landmark = response['landmark'];
-                  }
+          this.formData.phone = this.formData.phone;
+          this.formData.address_line1 = response['address_line1'];
+          this.formData.address_line2 = response['address_line2'];
+          this.formData.address_line3 = response['address_line3'];
+        }
       },
       (error: any) => {
         console.error('Error fetching data from the API:', error);

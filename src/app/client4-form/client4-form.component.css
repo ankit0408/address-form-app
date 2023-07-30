@@ -1,119 +1,120 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .container {
-    padding: 20px;
-  }
-  
-  .form-conatiner {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 400px;
-  }
-  
-  .form-grid {
-    display: grid;
-    gap: 10px;
-  }
-  
-  .form-row {
-    display: grid;
-    grid-template-columns: 150px auto;
-    align-items: center;
-  }
-  
-  .double-hei.form-container {
-    margin: 0 auto;
-    width: 600px;
-    padding: auto;
-    background-color: #eef0f2;
-    border: 1px solid #ccc;
-  }
+.form-container {
+  margin: 0 auto;
+  width: 600px;
+  padding: auto;
+  background-color: #eef0f2;
+  border: 1px solid #ccc;
+}
 
 
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  /* Style the container div */
-  div {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: auto;
-    border-radius: 5px;
-    width: 500px;
-    background-color: #f9f9f9;
-    
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
-  /* Style the container div */
-  /* .form-block {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-    width: 600px;
-    background-color: #f9f9f9;
-    
-  } */
+/* Style the container div */
+div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: auto;
+  border-radius: 5px;
+  width: 500px;
+  background-color: #f9f9f9;
   
+}
+
+/* Style the container div */
+/* .form-block {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 600px;
+  background-color: #f9f9f9;
   
-  /* Style the form elements */
-  form {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    padding: auto;
-  }
-  
-  .form-row {
-    /* Your existing styles... */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+} */
+
+
+/* Style the form elements */
+form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: auto;
+}
+
+.form-row {
+  /* Your existing styles... */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 10px; */
 
 }
 
 .form-col {
-    /* Optional: Add margin between phone and name fields */
-    margin-right: 10px;
+  /* Optional: Add margin between phone and name fields */
+  margin-right: 10px;
 
 }
 
-  .double-height {
-    height: 100px;
+.double-height {
+  height: 100px;
 
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    
-    /* width: 100px; */
-  }
-  
-  input,
-  select {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    align-items: center;
-    /* border-radius: 1px; */
-  }
+}
 
+label {
+  display: block;
+  font-weight: bold;
   
- 
- ght {
-    grid-row: span 2;
-  }
-  
+  /* width: 100px; */
+}
+
+input,
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  align-items: center;
+  /* border-radius: 1px; */
+}
+
+.form-row label {
+  margin-right: 10px; /* Adjust the value as per your preference */
+}
+
+
+/* Styling for the modal container */
+.modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background to darken the page */
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999; /* Make sure the modal appears on top of other elements */
+}
+
+/* Styling for the modal content */
+.modal-content {
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Adjust the size and position of the modal content */
+.modal-content {
+max-width: 400px; /* Set the maximum width of the modal content */
+width: 90%; /* You can adjust this value to your preference */
+}
+
+
+
+
