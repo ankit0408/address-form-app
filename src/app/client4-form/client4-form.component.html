@@ -56,5 +56,15 @@
       <button type="submit">Save</button>
       <button type="button" (click)="onCancel()">Cancel</button>
     </div>
+    <div class="form-row" *ngIf="showEntities">
+      <label for="entities">Entities:</label>
+      <textarea type="text" id="entities" name="entities" [(ngModel)]="formData.entities" required class="form-row"> </textarea>
+    </div>
+
+    <div class="form-row" *ngIf="showAddress">
+      <label for="complete_address">Complete Address:</label>
+      <textarea type="text" id="complete_address" name="complete_address" [(ngModel)]="formData.complete_address" required class="form-row"> </textarea>
+    </div>
   </form>
+  
 </div>

@@ -24,7 +24,10 @@ export class Client5FormComponent {
   popupData: string = '';
   showModal: boolean = false;
   selectedAddressId: string = '';
+  selectedAddress: string = '';
   loading: boolean = false;
+  showEntities: boolean = false;
+  showAddress: boolean = false;
 
 
 
@@ -42,6 +45,10 @@ export class Client5FormComponent {
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['entities']);
+          this.formData.complete_address = response.complete_address;
         },
         (error: any) => {
           console.error('Error sending data to the API:', error);
@@ -53,6 +60,10 @@ export class Client5FormComponent {
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['entities']);
+          this.formData.complete_address = response.complete_address;
         },
         (error: any) => {
           console.error('Error sending data to the API:', error);
@@ -90,6 +101,7 @@ export class Client5FormComponent {
     console.log(value);
     console.log(key);
     this.selectedAddressId = key;
+    this.selectedAddress = value;
 
     // Prepare the API URL with the complete_address as a query parameter
     const entities = ['full name','address_line1','address_line2','address_line3'];
@@ -107,6 +119,10 @@ export class Client5FormComponent {
           this.formData.address_line1 = response['address_line1'];
           this.formData.address_line2 = response['address_line2'];
           this.formData.address_line3 = response['address_line3'];
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['db_entities']);
+          this.formData.complete_address = this.selectedAddress;
         }
       },
       (error: any) => {

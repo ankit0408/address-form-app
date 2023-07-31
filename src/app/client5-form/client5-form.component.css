@@ -116,6 +116,16 @@ body {
 }
 
 
+textarea {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  min-height: 80px; 
+  resize: vertical; 
+}
+
   
  
  

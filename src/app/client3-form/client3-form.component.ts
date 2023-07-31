@@ -25,6 +25,9 @@ export class Client3FormComponent {
   showModal: boolean = false;
   selectedAddressId: string = '';
   loading: boolean = false;
+  showEntities: boolean = false;
+  showAddress: boolean = false;
+  selectedAddress: string = '';
 
 
 
@@ -41,7 +44,12 @@ export class Client3FormComponent {
       this.apiService.updateEntitiesData(this.formData, this.selectedAddressId).subscribe(
         (response: any) => {
           console.log('API Response after saving data:', response);
+          console.log(JSON.stringify(response['entities']))
           this.loading = false;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['entities']);
+          this.formData.complete_address = response.complete_address;
         },
         (error: any) => {
           console.error('Error sending data to the API:', error);
@@ -53,6 +61,10 @@ export class Client3FormComponent {
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['entities']);
+          this.formData.complete_address = response.complete_address;
         },
         (error: any) => {
           console.error('Error sending data to the API:', error);
@@ -90,6 +102,7 @@ export class Client3FormComponent {
     console.log(value);
     console.log(key);
     this.selectedAddressId = key;
+    this.selectedAddress = value;
 
     // Prepare the API URL with the complete_address as a query parameter
     const entities = ['name','address']
@@ -102,9 +115,14 @@ export class Client3FormComponent {
         if (response) {
           // Assuming the response is a dictionary with properties like 'name', 'pincode', etc.
           console.log(response);
+          console.log(response['entities'])
           this.formData.name = response['name'];
           this.formData.phone = this.formData.phone;
           this.formData.address = response['address'];
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['db_entities']);
+          this.formData.complete_address = this.selectedAddress;
         }
       },
       (error: any) => {

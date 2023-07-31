@@ -25,6 +25,9 @@ export class Client4FormComponent {
   showModal: boolean = false;
   selectedAddressId: string = '';
   loading: boolean = false;
+  showEntities: boolean = false;
+  showAddress: boolean = false;
+  selectedAddress: string = '';
 
 
 
@@ -42,6 +45,10 @@ export class Client4FormComponent {
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['entities']);
+          this.formData.complete_address = response.complete_address;
         },
         (error: any) => {
           console.error('Error sending data to the API:', error);
@@ -53,6 +60,10 @@ export class Client4FormComponent {
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['entities']);
+          this.formData.complete_address = response.complete_address;
         },
         (error: any) => {
           console.error('Error sending data to the API:', error);
@@ -87,6 +98,7 @@ export class Client4FormComponent {
     console.log(value);
     console.log(key);
     this.selectedAddressId = key;
+    this.selectedAddress = value;
 
     const entities = [
       'name',
@@ -110,6 +122,10 @@ export class Client4FormComponent {
           this.formData.city = response['City/District/Town'];
           this.formData.state = response['state'].toLowerCase();
           this.formData.phone = this.formData.phone;
+          this.showEntities = true;
+          this.showAddress = true;
+          this.formData.entities = JSON.stringify(response['db_entities']);
+          this.formData.complete_address = this.selectedAddress;
         }
       },
       (error: any) => {

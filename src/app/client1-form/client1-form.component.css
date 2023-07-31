@@ -115,6 +115,16 @@ body {
   width: 90%; /* You can adjust this value to your preference */
 }
 
+textarea {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  min-height: 80px; 
+  resize: vertical; 
+}
+
 
   
  
