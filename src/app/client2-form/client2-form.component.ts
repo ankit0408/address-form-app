@@ -38,9 +38,13 @@ export class Client2FormComponent {
     console.log(this.formData)
     console.log(this.selectedAddressId);
 
+    var formAddress = { ...this.formData };
+    delete formAddress.entities;
+    delete formAddress.complete_address;
+    console.log(formAddress)
 
     if (this.selectedAddressId) {
-      this.apiService.updateEntitiesData(this.formData, this.selectedAddressId).subscribe(
+      this.apiService.updateEntitiesData(formAddress, this.selectedAddressId).subscribe(
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;

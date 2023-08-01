@@ -14,7 +14,7 @@
     margin-bottom: 20px;
   }
 
-  .container li {
+  .container.heading {
     font-size: 36px;
   }
   

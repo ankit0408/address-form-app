@@ -40,9 +40,12 @@ export class Client1FormComponent {
     console.log(this.selectedAddressId);
     console.log(this.suggestions);
 
+    var formAddress = { ...this.formData };
+    delete formAddress.entities;
+    delete formAddress.complete_address;
 
     if (this.selectedAddressId) {
-      this.apiService.updateEntitiesData(this.formData, this.selectedAddressId).subscribe(
+      this.apiService.updateEntitiesData(formAddress, this.selectedAddressId).subscribe(
         (response: any) => {
           console.log('API Response after saving data:', response);
           this.loading = false;
@@ -109,7 +112,7 @@ export class Client1FormComponent {
 
     const apiUrl = `http://localhost:5000/api/addresses/entities`;
     
-    const entities=['name',  'pincode',  'locality',  'area',  'city',  'state',  'phone',  'landmark']
+    const entities=['name',  'pincode',  'locality',  'area/street',  'City/District/Town',  'state',  'phone',  'landmark']
     this.apiService.getClientEntity(this.selectedAddressId, entities).subscribe(
       (response: any) => {
         console.log('API Response with selected suggestion:', response);
@@ -119,8 +122,8 @@ export class Client1FormComponent {
           this.formData.pincode = response['pincode'];
           this.formData.name = response['name'];
           this.formData.locality = response['locality'];
-          this.formData.area = response['area'];
-          this.formData.city = response['city'];
+          this.formData.area = response['area/street'];
+          this.formData.city = response['City/District/Town'];
           this.formData.state = response['state'].toLowerCase();
           this.formData.landmark = response['landmark'];
           this.showEntities = true;

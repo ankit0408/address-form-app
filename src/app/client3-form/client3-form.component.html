@@ -24,7 +24,8 @@
     </div>
     <div class="form-row">
       <label for="address">Address:</label>
-      <textarea type="text" id="address" name="address" [(ngModel)]="formData.address" required class="form-row"> </textarea>
+      <textarea type="text" id="address" name="address" [(ngModel)]="formData.address" required
+        class="form-row"> </textarea>
     </div>
 
     <div class="form-row">
@@ -37,12 +38,14 @@
 
     <div class="form-row" *ngIf="showEntities">
       <label for="entities">Entities:</label>
-      <textarea type="text" id="entities" name="entities" [(ngModel)]="formData.entities" required class="form-row"> </textarea>
+      <textarea type="text" id="entities" name="entities" [(ngModel)]="formData.entities" required
+        class="form-row" readonly> </textarea>
     </div>
 
     <div class="form-row" *ngIf="showAddress">
       <label for="complete_address">Complete Address:</label>
-      <textarea type="text" id="complete_address" name="complete_address" [(ngModel)]="formData.complete_address" required class="form-row"> </textarea>
+      <textarea type="text" id="complete_address" name="complete_address" [(ngModel)]="formData.complete_address"
+        required class="form-row" readonly> </textarea>
     </div>
   </form>
 </div>
